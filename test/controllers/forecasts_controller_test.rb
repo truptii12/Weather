@@ -18,26 +18,23 @@ class ForecastsControllerTest < ActionController::TestCase
 
   test "should create forecast" do
     assert_difference('Forecast.count') do
-      post :create, forecast: { lat: @forecast.lat, lng: @forecast.lng }
+      post :create, forecast: { lat: @forecast.lat, lng: @forecast.lng , city: @forecast.city}
     end
 
     assert_redirected_to forecast_path(assigns(:forecast))
   end
 
-  test "should show forecast" do
-    get :show, id: @forecast
-    assert_response :success
-  end
+   test "should not save forecast without city" do
+  @forecast = Forecast.new
+  assert_not @forecast.save , "Forcast cant be made without city"
+end
 
   test "should get edit" do
     get :edit, id: @forecast
     assert_response :success
   end
 
-  test "should update forecast" do
-    patch :update, id: @forecast, forecast: { lat: @forecast.lat, lng: @forecast.lng }
-    assert_redirected_to forecast_path(assigns(:forecast))
-  end
+ 
 
   test "should destroy forecast" do
     assert_difference('Forecast.count', -1) do

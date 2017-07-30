@@ -12,4 +12,9 @@ class ForecastTest < ActiveSupport::TestCase
     response.body != nil
     assert true
   end
+  
+  test "should not save forecast without city" do
+  forecast = Forecast.new
+  assert_not forecast.save , "Forcast cant be made without city"
+end
 end

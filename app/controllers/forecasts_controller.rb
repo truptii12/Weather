@@ -76,6 +76,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def forecast_params
-      params.require(:forecast).permit(:lat, :lng, :city)
+      params.require(:forecast).permit(:lat, :lng,:city)
     end
 end

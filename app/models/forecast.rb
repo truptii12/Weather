@@ -2,7 +2,11 @@ class Forecast < ActiveRecord::Base
  has_many :lists
  has_many :cities
  accepts_nested_attributes_for :lists
+  validates :city, presence: true
+  
+  
 def initial_setup
+ puts city.inspect
 @list1=List.all
 @list1.each do |list|
 list.destroy
